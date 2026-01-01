@@ -2,3 +2,4 @@
 minishell
 *.o
 test_quote_handling
+tests/test_quote_handling

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <expander.h>
-#include <lexer.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -25,7 +24,8 @@ static bool	test_quote_removal(const char *input, const char *expected)
 		return (true);
 	if (!result || !expected)
 	{
-		free(result);
+		if (result)
+			free(result);
 		return (false);
 	}
 	passed = (strcmp(result, expected) == 0);
@@ -43,7 +43,8 @@ static bool	test_quote_removal_alt(const char *input, const char *expected)
 		return (true);
 	if (!result || !expected)
 	{
-		free(result);
+		if (result)
+			free(result);
 		return (false);
 	}
 	passed = (strcmp(result, expected) == 0);
