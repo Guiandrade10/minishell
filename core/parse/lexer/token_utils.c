@@ -74,7 +74,8 @@ bool	advance_to_word_end(t_lexer *lex)
 			{
 				ft_putstr_fd("minishell: unexpected EOF while looking for matching `", 2);
 				ft_putchar_fd(c, 2);
-				ft_putendl_fd("'", 2);
+				ft_putstr_fd("'", 2);
+				ft_putchar_fd('\n', 2);
 				return (false);
 			}
 			lex->pos = new_pos;
