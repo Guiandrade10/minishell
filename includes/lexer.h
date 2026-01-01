@@ -63,5 +63,6 @@ const char	*token_type_to_printable(t_token_type type);
 ssize_t		skip_quoted_section(const char *str, size_t pos);
 char		*extract_quoted_content(const char *str, size_t *pos);
 t_token		*token_create(t_token_type type, const char *value, bool owned);
+char		*remove_quotes(const char *str);
 
 #endif

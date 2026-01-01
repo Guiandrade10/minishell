@@ -54,17 +54,14 @@ static char	*process_quotes(const char *str)
 		}
 		qs.i++;
 	}
+	if (!qs.result)
+		return (ft_strdup(""));
 	return (qs.result);
 }
 
 char	*remove_outer_quotes(const char *str)
 {
-	char	*result;
-
 	if (!str)
 		return (NULL);
-	result = process_quotes(str);
-	if (!result)
-		return (ft_strdup(""));
-	return (result);
+	return (process_quotes(str));
 }
