@@ -1,12 +1,12 @@
 NAME = minishell
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-INCLUDES = -I includes -I /opt/homebrew/opt/readline/includes
+INCLUDES = -I includes
 
 SRCS = $(shell find . -name "*.c")
 OBJ_DIR = .obj/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
-READLINE_FLAGS = -L /opt/homebrew/opt/readline/lib -lreadline -lncurses
+READLINE_FLAGS = -lreadline -lncurses
 
 all: $(NAME)
 
