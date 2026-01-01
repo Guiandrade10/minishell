@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I includes
 
-SRCS = $(shell find . -name "*.c")
+SRCS = $(shell find . -name "*.c" ! -path "./tests/*")
 OBJ_DIR = .obj/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 READLINE_FLAGS = -lreadline -lncurses
@@ -34,4 +34,14 @@ test: re
 	@cd minishell_tester && (./tester || true) && cd ..
 	@rm -rf minishell_tester
 
-.PHONY: all re clean fclean val readline.supp
+test_quotes: $(NAME)
+	@$(CC) -o tests/test_quote_handling tests/test_quote_handling.c $(CFLAGS) $(INCLUDES) \
+		core/parse/expander/quote_utils.c \
+		core/parse/lexer/quote_removal.c \
+		core/parse/expander/expand_utils_1.c \
+		core/utils/string/*.c \
+		core/utils/memory/*.c
+	@tests/test_quote_handling
+	@rm -f tests/test_quote_handling
+
+.PHONY: all re clean fclean val readline.supp test test_quotes
